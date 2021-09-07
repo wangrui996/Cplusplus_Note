@@ -6,6 +6,6 @@
 
 
 
-## 工厂模式  
+## 2工厂模式  
 
 [工厂模式](https://zhuanlan.zhihu.com/p/83535678)
