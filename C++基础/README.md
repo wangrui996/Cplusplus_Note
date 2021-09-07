@@ -5,7 +5,8 @@
   * [文件操作](#文件操作)
   * [类的静态成员](#类的静态成员)
   * [虚函数和纯虚函数](#虚函数和纯虚函数)
-* [](#) 
+  * [内联函数与静态内联函数](#内联函数与静态内联函数)
+* [2C++智能指针](#2C++智能指针) 
 
 ## 1基础
 
@@ -56,10 +57,54 @@ class Frame
 
 
 ### 虚函数和纯虚函数
-[虚函数和纯虚函数](https://www.huaweicloud.com/articles/994d149b0c54b0578c89805b87051688.html)
+[虚函数和纯虚函数](https://www.huaweicloud.com/articles/994d149b0c54b0578c89805b87051688.html)  
+
+
+### 内联函数与静态内联函数
 
 
 
+
+## 2C++智能指针  
+### STL库
+[std::shared_ptr官方文档](http://www.cplusplus.com/reference/memory/shared_ptr/)  
+以下部分示例代码来自该官方文档  
+#### 定义
+
+#### get() 返回存储的指针  
+```cpp
+// shared_ptr::get example
+#include <iostream>
+#include <memory>
+
+int main () {
+  int* p = new int (10);
+  std::shared_ptr<int> a (p);
+
+  if (a.get()==p)
+    std::cout << "a and p point to the same location\n";
+
+  // three ways of accessing the same address:
+  std::cout << *a.get() << "\n";
+  std::cout << *a << "\n";
+  std::cout << *p << "\n";
+
+  return 0;
+}
+```
+输出：  
+```bash
+a and p point to the same location
+10
+10
+10
+```  
+
+#### get
+
+[C++智能指针](https://www.cnblogs.com/tenosdoit/p/3456704.html)
+
+### boost库  
 
 
 
