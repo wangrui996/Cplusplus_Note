@@ -167,10 +167,12 @@ a and p point to the same location
 
 ## 关于整型溢出的问题  
  
-  int n;
-  cout << n * 10 << endl;
-上面例子中，n * 10为int型，表示范围是[-2^31 ,2^31 - 1]; 当n * 10超出该范围时就会出错。
+    int n;
+    cout << n * 10 << endl;
+上面例子中，n * 10为int型，表示范围是[-2^31 ,2^31 - 1]; 当n * 10超出该范围时就会出错。下面这样输出就不会出错
  
+    int n;
+    cout << (long long) n * 10 << endl;
 
 
 
