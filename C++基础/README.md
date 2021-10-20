@@ -13,6 +13,10 @@
 
 * [2C++智能指针](#2C++智能指针) 
 
+
+* [关于整型溢出的问题](#关于整型溢出的问题)
+
+
 ## 1基础
 
 ### return0、return1
@@ -148,15 +152,28 @@ a and p point to the same location
 10
 10
 ```  
+#### get  
+ 
+ 
+### for循环遍历方法  
+ 
 
-#### get
+ 
+ 
+ 
 
 [C++智能指针](https://www.cnblogs.com/tenosdoit/p/3456704.html)
 
 ### boost库  
 
-
-
+## 关于整型溢出的问题  
+ 
+    int n;
+    cout << n * 10 << endl;
+上面例子中，n * 10为int型，表示范围是[-2^31 ,2^31 - 1]; 当n * 10超出该范围时就会出错。下面这样输出就不会出错
+ 
+    int n;
+    cout << (long long) n * 10 << endl;
 
 
 
