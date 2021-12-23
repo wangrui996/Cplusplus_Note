@@ -1,2 +1,3 @@
-# Cplusplus_Note
-C++,数据结构,STL学习笔记
+# Cplusplus_Note  
+
+[C++代码规范](https://epsavlc.github.io/2018/11/14/google-cpp-style.html)
