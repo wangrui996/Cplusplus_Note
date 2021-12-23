@@ -5,6 +5,8 @@
 std::string为标准库的可变长字符序列，需要包含头文件string  
 
 
+[关于string和stringstream](https://blog.csdn.net/shs1992shs/article/details/83051298)  
+
 ### 1.定义和初始化  
     string s1；           //默认构造函数初始化，s1为空字符串  
     string s2 = s1;      //拷贝初始化
@@ -80,7 +82,11 @@ len:要包含在子串中的字符数，。string::npos 的值表示直到字符
 s.substr(0, 0)返回的是个空字符串
  
 
-3.
+3.std::string::append  追加字符串  
+
+[cplusplus](https://www.cplusplus.com/reference/string/string/append/)
+
+**补充**：[C++字符串拼接效率对比](https://blog.csdn.net/mijichui2153/article/details/118154341)  
 
 
 ### 5.常用的标准库函数  
@@ -102,6 +108,18 @@ int main ()
   return 0;
 }
 ```
+
+
+### C++字符串和C字符串  
+
+C++ string类提供了c_str()、data()和copy()这三个成员函数用于将C++字符串string转换为C字符串C_string  
+
+    函数	功能
+    c_str()	返回一个以‘/0’结尾的字符数组
+    data()	以字符数组的形式返回字符串内容，但并不添加’/0’
+    copy()	字符串的内容复制或写入既有的c_string或字符数组内
+
+
 
 
 
