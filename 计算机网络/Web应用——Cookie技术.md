@@ -33,3 +33,8 @@ cookie是假设在HTTP上的一个组件
 * Web e-mail  
 * ......
 
+## Cookie存在问题   
+
+* 隐私问题  
+
+
