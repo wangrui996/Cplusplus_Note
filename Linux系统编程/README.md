@@ -23,4 +23,9 @@ Crtl+u :直接删除整行命令
 /etc:当前系统用户的配置信息  如passwd存放着用户信息（用户id等）  
 /home: 用户主目录  
 /lib:库文件  
-/
+/media:挂载磁盘相关  
+/opt:
+/proc:linux系统编程进程相关？  
+/root:
+/usr: unix software resource  用户安装的软件、第三方库  
+
