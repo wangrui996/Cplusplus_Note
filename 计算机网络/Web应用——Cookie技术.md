@@ -22,3 +22,5 @@ cookie是假设在HTTP上的一个组件
 
 ## Cookie的原理  
 
+<p align="center"><img src="https://user-images.githubusercontent.com/58176267/155877112-6ec1f617-a566-48a3-a744-d403973e2023.png"></p>  
+
