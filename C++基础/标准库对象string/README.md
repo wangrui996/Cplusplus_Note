@@ -87,6 +87,7 @@ s.substr(0, 0)返回的是个空字符串
 [cplusplus](https://www.cplusplus.com/reference/string/string/append/)
 
 **补充**：[C++字符串拼接效率对比](https://blog.csdn.net/mijichui2153/article/details/118154341)  
+多次拼接时使用+运算符会产生较多的临时对象？
 
 
 ### 5.常用的标准库函数  
