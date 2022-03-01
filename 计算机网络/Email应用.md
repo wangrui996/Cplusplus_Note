@@ -34,4 +34,27 @@
     * 命令(command) :ASCII文本  
     * 响应(response)：状态代码和语句  
    
-* Email消息只能包含7位ASCII码
+* Email消息只能包含7位ASCII码(设计之处是不支持图片，音频等的)
+
+
+## 实例  
+
+![image](https://user-images.githubusercontent.com/58176267/156175812-9c30cf71-e971-46a4-891e-137021a8e728.png)
+
+
+### SMTP交互实例  
+
+![image](https://user-images.githubusercontent.com/58176267/156176698-bb60c69b-9f3c-4a7a-bd67-1ab4c5fd69be.png)
+
+## SMTP协议  
+
+* 使用持久性连接() 
+* 要求消息必须由7位ASCII码构成  
+* SMTP服务器利用CRLF.CRL确定消息的结束（回车换行+.+回车换行）  
+
+## SMTP与HTTP对比  
+
+* HTTP：拉式(pull)——浏览器要到web server那拉回对象   SMTP：推式(push)——由发送方主动与接收方建立连接然后由发送方将消息推送到接收方  
+* 都使用命令/响应交互模式  
+* 命令和状态代码都是ASCII码  
+* HTTP：每个对象封装在独立的响应消息中  SMTP：多个对象在由多个部分构成的消息中发送  
