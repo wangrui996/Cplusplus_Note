@@ -15,7 +15,9 @@
 * 浏览器向缓存/代理服务器发送所有的HTTP请求  
     * 如果所请求对象在缓存中，缓存返回对象  
     * 否则，缓存服务器向原始服务器发送HTTP请求，获取对象，然后返回给客户端并保存该对象  
-     
+* 缓存既充当客户端，也充当服务器  一般由ISP(Internet服务提供商)架设
+
+![image](https://user-images.githubusercontent.com/58176267/156169563-6d9a99cd-aaaf-4e82-b86a-a1e2dad7dfb1.png)
 
  
 
