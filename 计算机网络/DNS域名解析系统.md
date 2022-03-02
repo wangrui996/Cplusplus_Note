@@ -64,3 +64,9 @@
 * 被查询服务器返回域名解析服务器的名字
 * “我不认识这个域名，但是你可以问这个服务器”
 ![image](https://user-images.githubusercontent.com/58176267/156358442-76a24b41-0994-4203-ae19-27e3bc486e2d.png)
+
+### 2.递归查询  
+
+* 将域名解析的任务交给所联系的服务器  
+
+![image](https://user-images.githubusercontent.com/58176267/156358781-b83f33a8-4abd-4c3c-afd1-1f94f2806230.png)
