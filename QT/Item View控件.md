@@ -81,4 +81,9 @@ ui->listWidget->addItems(list);
     }
 ```
 
+# Scroll Area  
+滚动区域  
+
+![image](https://user-images.githubusercontent.com/58176267/156524629-c69d8826-bbf3-4a82-8438-09405d182dc4.png)
+
 
