@@ -47,6 +47,6 @@ ui->listWidget->addItems(list);
     hero1 << "www" << "1111111111";
     QTreeWidgetItem * l1 = new QTreeWidgetItem(hero1);
     //追加子节点
-    liItem->addChild(hero1);
+    liItem->addChild(l1);
     //其他同理
 ```
