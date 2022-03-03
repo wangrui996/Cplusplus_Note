@@ -104,6 +104,10 @@ ui->listWidget->addItems(list);
 
 如通过两个按钮，按其中一个显示一个东西，按另外一个显示一个东西  
 ```cpp
+    //栈控件使用  
+    //设置默认值  不会根据ui设计界面去改变  
+    ui->stackedWidget->setCurrentIndex(1);
+    
     connect(ui->pushButton_28, &QPushButton::clicked, [=](){
         ui->stackedWidget->setCurrentIndex(0); //去stackedWidget属性查
     });
@@ -111,3 +115,62 @@ ui->listWidget->addItems(list);
         ui->stackedWidget->setCurrentIndex(1); //去stackedWidget属性查
     });
 ```
+
+# Dock Widget 浮动窗口  
+
+
+# Combo Box  下拉框  
+
+
+```cpp
+    //下拉框
+    //添加内容
+    ui->comboBox->addItem("位置控制");
+    ui->comboBox->addItem("速度控制");
+    ui->comboBox->addItem("加速度控制");
+    //点击按钮 选中速度控制
+    connect(ui->pushButton_30, &QPushButton::clicked, [=](){
+        ui->comboBox->setCurrentIndex(1);
+    });
+```
+# Font Combo Box 字体下拉框  
+
+# Line Edit 单行输入框  
+
+可以通过设置属性中 echoMode 设置显示的情况，如密码模式  
+
+# Text Edit 多行文本  
+
+# Plain Text Edit  
+
+通过它和Text Edit图标可以看出，Text Edit可设置颜色，字体，下划线，加粗等  
+Plain Text Edit是纯文本  
+
+# Spin Box 数字加减  
+
+# Double Spin Box 双精度数字的加减  
+
+# Time Edit 时间  
+
+# Date Edit 日期  
+
+# Horizontal Scroll Bar 水平滚动条  
+
+# Horizontal Slider 另一种形式的水平滚动条  
+
+上面两类滚动条可以配合Spin Box使用，实现动一个控件另一个跟着动  
+可以自定义封装成一个控件  
+
+# Label  标签  
+
+不仅可以显示文本，也可显示图片等  
+
+```cpp
+
+```
+
+
+
+
+
+
