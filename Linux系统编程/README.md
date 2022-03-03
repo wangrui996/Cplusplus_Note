@@ -43,7 +43,8 @@ Crtl+u :直接删除整行命令
 * 软连接： l  
 * 管道文件：p  
 * 套接字： s  
-**可通过ls -l查看文件详细信息时，第一个字符就是** 
+* 未知文件  
+**可通过ls -l查看文件详细信息时，第一个字符就是**  
 ![image](https://user-images.githubusercontent.com/58176267/156586847-e8978bf1-408e-4d4d-8b32-8279feca5fc3.png)
 ![image](https://user-images.githubusercontent.com/58176267/156586959-c07a67ae-62d3-40c8-9d15-d6ea2683a0b4.png)
 
