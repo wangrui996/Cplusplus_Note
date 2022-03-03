@@ -1,7 +1,5 @@
 # QListWidget控件  
 
-## 1.List Weight  
-
 ### 添加一行内容 可设置对齐方式  
 
 ```cpp
@@ -50,3 +48,37 @@ ui->listWidget->addItems(list);
     liItem->addChild(l1);
     //其他同理
 ```
+
+# QTableWidget  表格控件  
+
+注意：使用[]操作越界就挂了，使用at函数，越界后抛出异常
+
+```cpp
+    //TableWidget 控件
+    //设置列数
+    ui->tableWidget->setColumnCount(3);
+    //设置表头
+    ui->tableWidget->setHorizontalHeaderLabels(QStringList() << "姓名" << "性别" << "年龄"); //水平表头
+
+    //设置行数
+    ui->tableWidget->setRowCount(5);
+
+    //表格内容 QTableWidgetItem
+    ui->tableWidget->setItem(0, 0, new QTableWidgetItem("wang")); //setItem需要的第三个参数，是一个QTableWidgetItem的指针
+    QStringList nameList;
+    nameList << "zhangsan" << "lisi" << "wangwu" << "chenliu" << "liuxiu";
+
+    QList<QString> sexList;
+    sexList << "男" << "男" << "男" << "男" << "女";
+
+    for(int i = 0; i < 5; ++i)
+    {
+        int col = 0;
+        ui->tableWidget->setItem(i, col++, new QTableWidgetItem(nameList[i]));
+        ui->tableWidget->setItem(i, col++, new QTableWidgetItem(sexList.at(i)));
+        // int转QStringList  QString::number(18)
+        ui->tableWidget->setItem(i, col++, new QTableWidgetItem(QString::number(18)));
+    }
+```
+
+
