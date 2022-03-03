@@ -95,5 +95,11 @@ ui->listWidget->addItems(list);
 
 ![image](https://user-images.githubusercontent.com/58176267/156525883-a5cf2dea-867a-43dd-b903-e4ff3ef28cc2.png)
 
+# Stacked Widget 栈控件  
+
+可以实现不同对象的循环显示  
+
+![image](https://user-images.githubusercontent.com/58176267/156526798-6c2da755-e8f3-4062-a263-673d8813bf42.png)  
+![image](https://user-images.githubusercontent.com/58176267/156526827-0ac05035-c4c8-417f-83c6-05fbec6bfb94.png)
 
 
