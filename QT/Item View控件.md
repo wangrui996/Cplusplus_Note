@@ -166,7 +166,14 @@ Plain Text Edit是纯文本
 不仅可以显示文本，也可显示图片等  
 
 ```cpp
+    //利用Lable显示图片
+    ui->label->setPixmap(QPixmap(":/resurces/image/Axes.png"));
 
+    //利用Lable显示gif图片
+    QMovie * movie = new QMovie(":/resurces/image/t.gif");
+    ui->label->setMovie(movie); //查看setMovie()需要QMovie对象的一个指针
+    //播放动态图
+    movie->start();
 ```
  
 
