@@ -86,4 +86,14 @@ ui->listWidget->addItems(list);
 
 ![image](https://user-images.githubusercontent.com/58176267/156524629-c69d8826-bbf3-4a82-8438-09405d182dc4.png)
 
+# Tool Box  
+
+# Tab Widget 分页窗口  
+
+* 1.修改名称 在属性栏  
+* 2.添加窗口  右边选中该对象，选择插入页  
+
+![image](https://user-images.githubusercontent.com/58176267/156525883-a5cf2dea-867a-43dd-b903-e4ff3ef28cc2.png)
+
+
 
