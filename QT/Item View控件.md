@@ -97,9 +97,17 @@ ui->listWidget->addItems(list);
 
 # Stacked Widget 栈控件  
 
-可以实现不同对象的循环显示  
+可以实现不同对象的循环显示，但是下面的黑箭头只在开发时使用，便于切换，想要最后程序执行效果有切换效果，需要添加其他控件如按钮  
 
 ![image](https://user-images.githubusercontent.com/58176267/156526798-6c2da755-e8f3-4062-a263-673d8813bf42.png)  
-![image](https://user-images.githubusercontent.com/58176267/156526827-0ac05035-c4c8-417f-83c6-05fbec6bfb94.png)
+![image](https://user-images.githubusercontent.com/58176267/156526827-0ac05035-c4c8-417f-83c6-05fbec6bfb94.png)  
 
-
+如通过两个按钮，按其中一个显示一个东西，按另外一个显示一个东西  
+```cpp
+    connect(ui->pushButton_28, &QPushButton::clicked, [=](){
+        ui->stackedWidget->setCurrentIndex(0); //去stackedWidget属性查
+    });
+    connect(ui->pushButton_29, &QPushButton::clicked, [=](){
+        ui->stackedWidget->setCurrentIndex(1); //去stackedWidget属性查
+    });
+```
