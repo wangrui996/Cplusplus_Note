@@ -10,4 +10,9 @@
 
 ## P2P与C/S架构的区别————以文件分发为例  
 
+### C/S结构 vs P2P  
 
+
+#### C/S结构  
+
+![image](https://user-images.githubusercontent.com/58176267/156984752-e307e715-3f74-4ddc-9d06-2a50bab01459.png)
