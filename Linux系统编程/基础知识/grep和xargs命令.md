@@ -64,7 +64,7 @@ touch abc xyz
 * 文件名加单引号  
 touch 'abc xyz'  
 
-8 **问题**  
+8.**问题**  
 通过find 配合-exec参数执行，能找到文件名带空格的文件  
 ![image](https://user-images.githubusercontent.com/58176267/157056082-46f87ed5-7fd8-4a23-86b3-54b15f28c195.png)
 
