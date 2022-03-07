@@ -36,5 +36,15 @@ find 路径 -maxdepth 1 -name "*.c"
 搜索大于1k小于500k的文件  
 ![image](https://user-images.githubusercontent.com/58176267/157043598-66da421e-3921-485e-bb89-c5dfaaf91fb3.png)
 
+5. 按时间搜索  
+
+-atime、-mtime、-ctime 天
+-amin、-mmin、-cmin 分钟
+a(Access) 最近访问时间  
+m(Modify) 最近更改时间（更改文件属性）  
+c(Change) 最近改动时间（更改文件内容）  
+使用 stat+文件名   可以查看上面参数  
+
+![image](https://user-images.githubusercontent.com/58176267/157045092-d122e097-28d8-4f9a-b7e8-48e10785a79b.png)
 
 
