@@ -60,3 +60,10 @@ find 路径 -name "*tmp" -exec ls -l {} \;
 
 ![image](https://user-images.githubusercontent.com/58176267/157046053-d81f7d69-227a-45c7-b28e-673ddff63a6a.png)
 
+![image](https://user-images.githubusercontent.com/58176267/157046249-2698a781-6dfd-4a27-bf6a-9047d1f54b96.png)
+
+2.-ok 以交互式的方式将find搜索的结果集执行某一指定命令   
+
+![image](https://user-images.githubusercontent.com/58176267/157046843-508dae25-bb7d-41be-8a4b-630beb9a8042.png)
+
+
