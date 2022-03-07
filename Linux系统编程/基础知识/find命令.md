@@ -1,5 +1,7 @@
 # find命令  
 
+## 基本find命令
+
 1.-type 按文件类型搜索  
 
 find 路径 -type "l"  将输入路径下及其子目录(递归查找)下的**软链接**都找到  
@@ -47,4 +49,14 @@ c(Change) 最近改动时间（更改文件内容）
 
 ![image](https://user-images.githubusercontent.com/58176267/157045092-d122e097-28d8-4f9a-b7e8-48e10785a79b.png)
 
+## find命令进阶  
+
+1.将find 搜索的结果集执行某一指定命令
+
+find 路径 -name "*tmp" -exec ls -l {} \;  
+
+{}表示find搜索的结果集  
+\表示转义字符
+
+![image](https://user-images.githubusercontent.com/58176267/157046053-d81f7d69-227a-45c7-b28e-673ddff63a6a.png)
 
