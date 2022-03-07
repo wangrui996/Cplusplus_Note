@@ -13,6 +13,11 @@
 ### C/S结构 vs P2P  
 
 
-#### C/S结构  
+#### C/S架构  
+
+基本上由于N比较大，时间基本取决于前者，导致时间是随N线性增长的  
 
 ![image](https://user-images.githubusercontent.com/58176267/156984752-e307e715-3f74-4ddc-9d06-2a50bab01459.png)
+
+#### P2P架构  
+
