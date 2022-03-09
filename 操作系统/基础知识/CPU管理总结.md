@@ -21,6 +21,6 @@
 
 3.sys_fork调用copy_process 做出一套新的PCB，栈，其中申请PCB内存后一部分做了内核栈，然后将PCB中tss的eip、esp、eax等赋好值(PCB中除了tss，还有该进程的状态等)    
 
-此时，传进来的eip
+注意copy_process会使用一堆参数，这些参数都是从栈中取的，是父进程在执行int 0x80时将当时cpu各寄存器的时压入的栈，其中的eip
 
 ![image](https://user-images.githubusercontent.com/58176267/157419233-0a629b6d-201c-4088-abf0-8854d509a5c1.png)
