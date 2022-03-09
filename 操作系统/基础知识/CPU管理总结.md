@@ -28,3 +28,19 @@
 copy_process还将eax设为了0  
 
 ![image](https://user-images.githubusercontent.com/58176267/157419233-0a629b6d-201c-4088-abf0-8854d509a5c1.png)
+
+
+4.父进程执行完copy_process() {} 就要返回 ret到哪里？  
+
+下面的图很清楚，按调用的顺序逆着回去就可，在回到system_call时，会进行调度 jne reschedule （打印A的进程刚才只是创建了并且具备了执行的条件，但父进程中必须经过调度后才会执行，所以需要在适当的地方进行schedule，这里是父进程在iret也就是中断返回的时候进行了调度）
+
+```cpp
+system_call:
+ ...call sys_call_table(,%eax,4) 
+ cmpl $0, state(current)
+ jne reschedule
+ iret  //到哪里
+```
+
+![image](https://user-images.githubusercontent.com/58176267/157421552-8a16b028-3575-4216-aa25-1cb2d47cdb24.png)
+
