@@ -52,7 +52,46 @@ system_call:
 ```
 ![image](https://user-images.githubusercontent.com/58176267/157423674-120c6822-70d7-4e94-8e71-41637f0fbf34.png)
 
-  
+5.父进程创建完两个进程后，就可以执行wait()了，进入阻塞态让出cpu   **wait()函数会执行一个系统调用 __NR_wait**  
+
+**将自己这个进程的状态设置成阻塞态，再调用schedule();**  
+
+![image](https://user-images.githubusercontent.com/58176267/157430843-d5e99c1f-a259-4fc3-a476-122c591ddffb.png)
+
+6.schedule  
+![image](https://user-images.githubusercontent.com/58176267/157431222-e43a5c71-ef8a-4fa8-bd29-0c50e7259658.png)
+
+怎样切换到另外一个线程：将cpu中内容给当前进程current的PCB(里面的TSS)，然后将next进程的PCB(里面的TSS)赋值给CPU  
+
+![image](https://user-images.githubusercontent.com/58176267/157431748-1bbc9128-7633-44c6-abe6-53cc1d345bda.png)
+
+**这样已经可以不断打印A了，但是怎么让B线程执行？**  
+
+**7.切换到打印B的线程————时钟中断**
+
+因为schedule已经有了(包括调度(最简单的就从就绪态队列的队首取出一个next)和switch_to等)，那么需要的就是调用schedule函数，也就是要有个**调度点**来调用schedule  
+
+打印的过程怎样在哪里插入这个**调度点**，因为schedule必须在内核态调用，所以必须进入内核，那么就要靠中断————**时钟中断**  
+
+**时钟中断代码：**  
+
+* 首先能够捕获时钟
+* 初始化时钟中断
+* 每到一个时钟中断，进入中断处理函数，将当前进程(current)的counter减1，一旦减成0，调用schedule();   **这个counter是时间片，每个进程的PCB中都有这样一个量**  
+* A进程切换到B进程过程与前面一致
+
+![image](https://user-images.githubusercontent.com/58176267/157433668-8f2736d9-8cff-49b8-9d78-0e44d5370bde.png)
+
+
+
+
+
+
+
+
+
+
+
 
 
 
