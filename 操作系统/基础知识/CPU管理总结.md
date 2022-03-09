@@ -41,6 +41,6 @@ system_call:
  jne reschedule
  iret  //到哪里
 ```
+![image](https://user-images.githubusercontent.com/58176267/157423674-120c6822-70d7-4e94-8e71-41637f0fbf34.png)
 
-![image](https://user-images.githubusercontent.com/58176267/157421552-8a16b028-3575-4216-aa25-1cb2d47cdb24.png)
 
