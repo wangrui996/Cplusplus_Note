@@ -56,3 +56,18 @@ Crtl+u :直接删除整行命令
 ![image](https://user-images.githubusercontent.com/58176267/156586847-e8978bf1-408e-4d4d-8b32-8279feca5fc3.png)
 ![image](https://user-images.githubusercontent.com/58176267/156586959-c07a67ae-62d3-40c8-9d15-d6ea2683a0b4.png)
 
+
+## 补充  
+
+1.安装aptitude可以代替apt-get命令  
+如 sudo aptitude install xxx
+
+同时可以使用  
+sudo aptitude show xxx  
+查看xxx是否已经被安装
+
+
+
+
+
+
