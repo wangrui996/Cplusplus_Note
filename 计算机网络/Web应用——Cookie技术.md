@@ -13,7 +13,7 @@
 
 ## Cookie的组件  
 
-cookie是假设在HTTP上的一个组件  
+cookie是架设在HTTP上的一个组件  
 
 * HTTP响应消息的cookie头部行   HTTP请求和响应消息有很多头部行，每个头部行由字段和值组成，头部行是可扩展的  
 * HTTP请求消息的cookie头部行  
