@@ -38,3 +38,17 @@ sudo make insall
 ```
  npm i docsify-cli -g
 ```
+
+
+3 
+wr@wr:~$ docsify init ./slamrui
+./slamrui already exists.
+✔ Are you sure you want to rewrite it? (y/N) true
+
+Initialization succeeded! Please run docsify serve ./slamrui
+
+
+
+
+
+
