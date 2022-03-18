@@ -146,6 +146,32 @@ $(obj):%.o:%.c
 * -f：指定文件执行 make 命令  xxx.mk
 
 
+## 总结  
+
+可以将上述的源文件放在src目录下，将头文件放在include目录下，将生成的中间.o文件放在obj目录下，此时重新编写Makefile文件   
 
 
+需要注意： 
 
+* 此时 src = $(wildcard, ./src/*.c)  # src = ./src/add.c ./src/sub.c  .......
+
+* obj = $(patsubst %.c, %.o, $(src))     将参数 3 中，包含参数 1 的部分，替换为参数 2  这个函数时，注意%通配符的含义，如果像这么写，意味着从$(src)这个值中，%表示.c前面的字符，然后 %.o中的%也表示.c前面的字符，两者是对应的，这么写的话 最后 obj = ./src/add.o ./src/sub.o  而我们希望的是后面静态模式规则中源文件生成的.o文件放在obj下，所以这里应该写成  
+obj = $(patsubst ./src/%.c, ./obj/%.o, $(src))   # obj = ./obj/add.o ./obj/sub.o  
+
+* 静态模式规则也要修改  
+
+
+```shell
+src = src = $(wildcard, ./src/*.c)  # src = src = ./src/add.c ./src/sub.c  .......
+
+obj = $(patsubst ./src/%.c, ./obj/%.o, $(src))    # obj = ./obj/add.o ./obj/sub.o  
+
+a.out: $(obj)  
+    gcc $^ -o $@    
+
+$(obj):./obj/%.o:./src/%.c          # 对于$(obj)中的值(目标)，都用后面的模式规则生成  即依赖src下源文件在obj目录下生成同名的.o文件  需要的命令是gcc -c $< -o %@
+    gcc -c $< -o %@                 # 相当于会执行 gcc -c ./src/add.c -o ./obj/add.o  ...........
+
+clean：
+    -rm -rf $(obj) a.out
+```
