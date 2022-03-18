@@ -78,6 +78,7 @@ int close(int fd);
 
 ### open函数 demo  
 
+#### 打开一个已有文件
 
 ```c
 #include <unistd.h>  //包含了open的两个函数原型  
@@ -103,6 +104,42 @@ wr@wr:~/linux系统编程/open$ ls
 open  open.c  txt
 wr@wr:~/linux系统编程/open$ ./open 
 fd = 3
+```
+
+#### 创建一个文件   需指定权限  
+
+```c
+#include <unistd.h>  //包含了open的两个函数原型  
+#include <fcntl.h>   //file control  O_RDONLY等定义  
+#include <stdio.h>
+
+
+int main(int argc, char** argv) 
+{
+	int fd;
+	//创建一个文件并以只读方式打开
+	//权限是 rw-r--r-- 用户，同组用户和其他组权限分别为 可读写-只读-只读  
+	fd = open("./txt/text2.txt", O_RDONLY | O_CREAT, 0664); 
+	printf("fd = %d\n", fd);
+	
+	close(fd);
+	
+	return 0;
+}
+```
+执行  
+```shell
+wr@wr:~/linux系统编程/open$ gcc open.c -o open
+wr@wr:~/linux系统编程/open$ ./open 
+fd = 3
+```  
+
+查看文件  
+```shell
+wr@wr:~/linux系统编程/open/txt$ ls -l
+总用量 4
+-rw-r--r-- 1 wr wr  0 3月  18 15:04 text2.txt
+-rw-r--r-- 1 wr wr 36 3月  18 14:50 text.txt
 ```
 
 
