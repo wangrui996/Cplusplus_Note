@@ -43,7 +43,7 @@ RETURN VALUE
 int open(const char *pathname, int flags, mode_t mode);
 ```
 
-* mode_t mode ： mode_t是一个8进制整形 如 0 664  会给文件加权限  文件在创建的时候可能需要
+* mode_t mode ： mode_t是一个8进制整形（以0开头） 如 0664  会给文件加权限  文件在创建的时候可能需要
 
 * 创建文件时。指定文件访问权限  
 
@@ -78,7 +78,7 @@ int close(int fd);
 
 ### open函数 demo  
 
-#### 打开一个已有文件
+#### 1.打开一个已有文件
 
 ```c
 #include <unistd.h>  //包含了open的两个函数原型  
@@ -106,7 +106,7 @@ wr@wr:~/linux系统编程/open$ ./open
 fd = 3
 ```
 
-#### 创建一个文件   需指定权限  
+#### 2.创建一个文件   需指定权限  
 
 ```c
 #include <unistd.h>  //包含了open的两个函数原型  
@@ -141,5 +141,62 @@ wr@wr:~/linux系统编程/open/txt$ ls -l
 -rw-r--r-- 1 wr wr  0 3月  18 15:04 text2.txt
 -rw-r--r-- 1 wr wr 36 3月  18 14:50 text.txt
 ```
+
+#### 3.以追加方式打开文件  
+
+该方式打开一个已有内容的文件后，再向里写不会清空原有内容  
+
+
+#### 4.O_TRUNC 截断文件  把文件长度截断为0，相当于清零  
+
+```c
+#include <unistd.h>  //包含了open的两个函数原型  
+#include <fcntl.h>   //file control  O_RDONLY等定义  
+#include <stdio.h>
+
+int main(int argc, char** argv) 
+{
+	int fd;
+	//如果./txt/text.txt存在，以只读方式打开并将其清空    如果不存在，创建，并且权限为644
+	fd = open("./txt/text.txt", O_RDONLY | O_CREAT | O_TRUNC, 0644); 
+	printf("fd = %d\n", fd);
+	
+	close(fd);
+	
+	return 0;
+}
+```
+
+执行
+```shell
+wr@wr:~/linux系统编程/open$ gcc open.c -o open
+wr@wr:~/linux系统编程/open$ ./open 
+fd = 3
+```
+
+查看文件属性及内容  
+
+```shell
+wr@wr:~/linux系统编程/open/txt$ ll
+总用量 8
+drwxr-xr-x 2 wr wr 4096 3月  18 15:04 ./
+drwxr-xr-x 3 wr wr 4096 3月  18 15:13 ../
+-rw-r--r-- 1 wr wr    0 3月  18 15:04 text2.txt
+-rw-r--r-- 1 wr wr    0 3月  18 15:13 text.txt
+wr@wr:~/linux系统编程/open/txt$ cat text.txt
+wr@wr:~/linux系统编程/open/txt$ 
+```  
+
+
+
+
+
+
+
+
+
+
+
+
 
 
