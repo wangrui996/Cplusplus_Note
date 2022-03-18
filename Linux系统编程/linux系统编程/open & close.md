@@ -228,6 +228,7 @@ text_new.txt本来不存在，按照下面代码执行后 权限是755  也就�
 -rwxr-xr-x 1 wr wr    0 3月  18 15:25 text_new.txt*
 ```
 
+### open常见错误  
 
 #### 6 打开不存在的文件  
 
@@ -295,5 +296,59 @@ fd = -1
 , errno=2:No such file or directory
 ```
 
+#### 7 以写方式打开只读文件  (打开文件没有对应权限)  
 
+先将text2.txt权限修改为只读  
+
+```c
+#include <unistd.h>  //包含了open的两个函数原型  
+#include <fcntl.h>   //file control  O_RDONLY等定义  
+#include <stdio.h>
+#include <errno.h>
+#include <string.h>
+
+int main(int argc, char** argv) 
+{
+	int fd;
+	
+	fd = open("./txt/text2.txt", O_WRONLY); 
+	printf("fd = %d\n, errno=%d:%s\n", fd, errno, strerror(errno));
+	
+	close(fd);
+	
+	return 0;
+}
+```
+```shell
+wr@wr:~/linux系统编程/open$ ./open 
+fd = -1
+, errno=13:Permission denied
+```
+#### 8 以只写方式打开目录  一般open是打开一个文件  
+
+```c
+#include <unistd.h>  //包含了open的两个函数原型  
+#include <fcntl.h>   //file control  O_RDONLY等定义  
+#include <stdio.h>
+#include <errno.h>
+#include <string.h>
+
+int main(int argc, char** argv) 
+{
+	int fd;
+	
+	fd = open("./txt/", O_WRONLY); 
+	printf("fd = %d\n, errno=%d:%s\n", fd, errno, strerror(errno));
+	
+	close(fd);
+	
+	return 0;
+}
+```
+
+```shell
+wr@wr:~/linux系统编程/open$ ./open 
+fd = -1
+, errno=21:Is a directory
+```
 
