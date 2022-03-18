@@ -46,6 +46,13 @@ int open(const char *pathname, int flags, mode_t mode);
 * mode_t mode ： mode_t是一个8进制整形（以0开头） 如 0664  会给文件加权限  文件在创建的时候可能需要
 
 * 创建文件时。指定文件访问权限  
+	* 权限同时受umask影响，默认值可以通过 当前目录下umask查看，第一个0表示八进制  
+	* 如下面，umask为022 则权限应该是 755（rwxr-xr-x）
+```shell
+wr@wr:~/linux系统编程/open$ umask
+0022
+```
+
 
 ### flag参数  
 
@@ -188,15 +195,105 @@ wr@wr:~/linux系统编程/open/txt$
 ```  
 
 
+#### 5 创建文件权限问题  
+
+文件权限 = mode & ~umask   （umask为022，取反(按照位取反)后为 755），777 & 755 按位与后结果为755
+
+* 执行umask查看权限掩码   如下图，umask为022 则权限应该是 755（rwxr-xr-x）
+```shell
+wr@wr:~/linux系统编程/open$ umask
+0022
+```  
+
+```c
+#include <unistd.h>  //包含了open的两个函数原型  
+#include <fcntl.h>   //file control  O_RDONLY等定义  
+#include <stdio.h>
+
+int main(int argc, char** argv) 
+{
+	int fd;
+	//如果/txt/text_new.txt存在，以只读方式打开并将其清空    如果不存在，创建，并且权限为777
+	fd = open("./txt/text_new.txt", O_RDONLY | O_CREAT | O_TRUNC, 0777); 
+	printf("fd = %d\n", fd);
+	
+	close(fd);
+	
+	return 0;
+}
+```
+text_new.txt本来不存在，按照下面代码执行后 权限是755  也就是不是按照我们设定的mode = 777 而是 mode & ~umask  755
+
+```shell
+-rwxr-xr-x 1 wr wr    0 3月  18 15:25 text_new.txt*
+```
 
 
+#### 6 打开不存在的文件  
+
+```c
+#include <unistd.h>  //包含了open的两个函数原型  
+#include <fcntl.h>   //file control  O_RDONLY等定义  
+#include <stdio.h>
+#include <errno.h>
+
+int main(int argc, char** argv) 
+{
+	int fd;
+	
+	fd = open("./txt/text111111.txt", O_RDONLY); 
+	//根据open手册，如果打开失败，返回值为-1，且会设置一个errno，这个errno可看作操作系统的一个全局变量 #include <errno.h>
+	printf("fd = %d\n, errno=%d\n", fd, errno);
+	
+	close(fd);
+	
+	return 0;
+}
+```
 
 
+编译运行  
+
+```shell
+wr@wr:~/linux系统编程/open$ ./open 
+fd = -1
+, errno=2
+```
+
+终端输入 man strerror  
+有个函数原型
+```shell
+#include <string.h>
+char *strerror(int errnum);
+```
+根据输入的参数errnum，可以查看其i对应的解释  
 
 
+```c
+#include <unistd.h>  //包含了open的两个函数原型  
+#include <fcntl.h>   //file control  O_RDONLY等定义  
+#include <stdio.h>
+#include <errno.h>   //使用errno变量
+#include <string.h>  //使用strerror函数
 
+int main(int argc, char** argv) 
+{
+	int fd;
+	
+	fd = open("./txt/text111111.txt", O_RDONLY); 
+	printf("fd = %d\n, errno=%d:%s\n", fd, errno, strerror(errno));
+	
+	close(fd);
+	
+	return 0;
+}
+```
 
-
+```shell
+wr@wr:~/linux系统编程/open$ ./open 
+fd = -1
+, errno=2:No such file or directory
+```
 
 
 
