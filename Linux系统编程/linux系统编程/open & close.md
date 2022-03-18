@@ -3,7 +3,7 @@
 使用linux程序员手册 即man手册查看函数介绍  
 
 
-## open  
+# open  
 
 man 2 open 查看  
 
@@ -17,7 +17,7 @@ int open(const char *pathname, int flags, mode_t mode);
 ```
 
 
-### 第一个函数原型  
+## 第一个函数原型  
 
 ```c
 int open(const char *pathname, int flags);
@@ -37,7 +37,7 @@ RETURN VALUE
 
 ```
 
-### 第二个函数原型  
+## 第二个函数原型  
 
 ```c
 int open(const char *pathname, int flags, mode_t mode);
@@ -56,10 +56,53 @@ int open(const char *pathname, int flags, mode_t mode);
 * O_TRUNC 截断  
 * O_NONBLOCK 非阻塞  
 
+
+
+# close  
+
+关闭一个文件描述符  
+
+函数原型  
+
+```c 
+int close(int fd);
+```
+参数  
+* fd：文件描述符
+
+返回值  
+
+* 0 成功
+* -1 失败  
+
+
 ### open函数 demo  
 
 
+```c
+#include <unistd.h>  //包含了open的两个函数原型  
+#include <fcntl.h>   //file control  O_RDONLY等定义  
+#include <stdio.h>
 
 
+int main(int argc, char** argv) 
+{
+	int fd;
+	fd = open("./txt/text.txt", O_RDONLY);
+	printf("fd = %d\n", fd);
+	
+	close(fd);
+	
+	return 0;
+}
+```
+输出
+```shell
+wr@wr:~/linux系统编程/open$ gcc open.c -o open
+wr@wr:~/linux系统编程/open$ ls
+open  open.c  txt
+wr@wr:~/linux系统编程/open$ ./open 
+fd = 3
+```
 
 
