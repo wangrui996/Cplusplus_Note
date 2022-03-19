@@ -2,6 +2,8 @@
 
 [docsify官方参考](https://docsify.js.org/#/zh-cn/quickstart)  
 
+[模板参考](https://github.com/wugenqiang/NoteBook)
+
 
 https://docsify.js.org/#/zh-cn/quickstart
 
